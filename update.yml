@@ -29,5 +29,5 @@
      - name: register webserver from  load balancer
        shell: echo "enable server fifanews/{{ ansible_hostname }}" | socat stdio /var/lib/haproxystats
        delegate_to: "{{ item }}"
-       with_items: groups.lb
+       with_items: "{{ groups.lb }}"
 
