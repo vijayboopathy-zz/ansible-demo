@@ -1,0 +1,5 @@
+export OS_USERNAME=<Your OS Username>
+export OS_PASSWORD=<Your OS Password>
+export OS_USER_DOMAIN_NAME=Default
+export OS_AUTH_URL=http://10.40.0.21:35357/v3
+export OS_IDENTITY_API_VERSION=3

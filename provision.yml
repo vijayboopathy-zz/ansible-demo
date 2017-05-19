@@ -1,0 +1,6 @@
+---
+- name: provision the infrastructure
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - { role: provision }

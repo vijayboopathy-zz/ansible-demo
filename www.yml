@@ -1,0 +1,20 @@
+---
+- hosts: webservers
+  remote_user: ubuntu
+  become: yes
+#  environment:
+#    PATH: "$PATH:{{ (ansible_env|default({})).PATH|default('') }}"
+  pre_tasks:
+     - shell: echo 'I":" Beginning to configure web server..'
+  roles:
+     - { role: nginx, tags: [ 'www', 'nginx' ] }
+     - { role: php5-fpm, tags: [ 'www', 'php5-fpm' ] }
+     - { role: wordpress, tags: [ 'www', 'wordpress' ] }
+  post_tasks:
+     - shell: echo 'I":" Done configuring nginx web server...'
+
+  vars:
+    cluster:
+      id: clusterB
+
+

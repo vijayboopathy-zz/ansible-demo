@@ -1,0 +1,25 @@
+---
+- name: provisioning our infrastructure
+  os_server:
+    state: present
+    name: "{{ item.name }}"
+    image: "{{ item.image }}"
+    key_name: "{{ item.key }}"
+    security_groups: "{{ item.secgrp }}"
+    wait: yes
+    flavor: "{{ item.flavor }}"
+    network: "{{ item.network }}"
+  with_items: "{{ servers }}"
+  register: "os_hosts"
+
+- name: add to dynamic inventory
+  add_host:
+    name: "{{ item.server.public_v4  }}"
+    groups: "{{ item['item']['meta']['group'] }}"
+#    ansible_host: "{{ item.openstack.accessIPv4 }}"
+  with_items: "{{ os_hosts.results }}"
+
+- name: create local inventory from in memory inventory
+  template:
+    src: os-hosts.j2
+    dest: "{{ inv_dest }}"

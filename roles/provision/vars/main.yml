@@ -1,0 +1,38 @@
+---
+servers:
+  - name: web1
+    image: ubuntu-trusty
+    flavor: m1.small
+    key: vijay
+    network: External-Network
+    secgrp: Open
+    meta:
+      hostname: web1
+      group: webservers
+  - name: web2
+    image: ubuntu-trusty
+    flavor: m1.small
+    key: vijay
+    secgrp: Open
+    network: External-Network
+    meta:
+      hostname: web2
+      group: webservers
+  - name: db
+    image: ubuntu-trusty
+    flavor: m1.small
+    key: vijay
+    network: External-Network
+    secgrp: Open
+    meta:
+      hostname: db
+      group: db
+  - name: lb
+    image: ubuntu-trusty
+    flavor: m1.small
+    key: vijay
+    network: External-Network
+    secgrp: Open
+    meta:
+      hostname: lb
+      group: lb

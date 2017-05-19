@@ -1,0 +1,13 @@
+--- 
+ #filename: roles/php5-fpm/tasks/install.yml
+ 
+  - name: install php5-fpm and family
+    apt: 
+      name: "{{ item }}" 
+      state: installed
+    with_items: "{{ php5.packages }}"
+    notify: 
+     - restart php5-fpm service
+    tags:
+     - install 
+

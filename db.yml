@@ -1,0 +1,14 @@
+---
+# Playbook for Database Servers
+# filename: db.yml
+- hosts: db
+  remote_user: ubuntu
+  become: yes
+#  vars_files:
+#    - "vars/db.yml"
+  roles:
+     - { role: mysql, tags: 'mysql'  }
+
+  
+
+
